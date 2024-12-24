@@ -1,0 +1,48 @@
+<html>
+<head>
+<title>SwaggerConfig.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #7a7e85;}
+.s1 { color: #bcbec4;}
+.s2 { color: #cf8e6d;}
+.s3 { color: #bcbec4;}
+.s4 { color: #5f826b; font-style: italic;}
+.s5 { color: #67a37c; font-style: italic;}
+.s6 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+SwaggerConfig.java</font>
+</center></td></tr></table>
+<pre><span class="s0">// /com/rcs/portal/common/config/SwaggerConfig.java</span>
+<span class="s2">package </span><span class="s1">com</span><span class="s3">.</span><span class="s1">rcs</span><span class="s3">.</span><span class="s1">portal</span><span class="s3">.</span><span class="s1">common</span><span class="s3">.</span><span class="s1">config</span><span class="s3">;</span>
+
+<span class="s2">import </span><span class="s1">io</span><span class="s3">.</span><span class="s1">swagger</span><span class="s3">.</span><span class="s1">v3</span><span class="s3">.</span><span class="s1">oas</span><span class="s3">.</span><span class="s1">models</span><span class="s3">.</span><span class="s1">OpenAPI</span><span class="s3">;</span>
+<span class="s2">import </span><span class="s1">io</span><span class="s3">.</span><span class="s1">swagger</span><span class="s3">.</span><span class="s1">v3</span><span class="s3">.</span><span class="s1">oas</span><span class="s3">.</span><span class="s1">models</span><span class="s3">.</span><span class="s1">info</span><span class="s3">.</span><span class="s1">Info</span><span class="s3">;</span>
+<span class="s2">import </span><span class="s1">org</span><span class="s3">.</span><span class="s1">springframework</span><span class="s3">.</span><span class="s1">context</span><span class="s3">.</span><span class="s1">annotation</span><span class="s3">.</span><span class="s1">Bean</span><span class="s3">;</span>
+<span class="s2">import </span><span class="s1">org</span><span class="s3">.</span><span class="s1">springframework</span><span class="s3">.</span><span class="s1">context</span><span class="s3">.</span><span class="s1">annotation</span><span class="s3">.</span><span class="s1">Configuration</span><span class="s3">;</span>
+
+<span class="s4">/**</span>
+ <span class="s4">* Swagger 설정을 위한 Configuration 클래스입니다.</span>
+ <span class="s4">*</span>
+ <span class="s4">* </span><span class="s5">@author </span><span class="s4">RCS Portal Team</span>
+ <span class="s4">* </span><span class="s5">@version </span><span class="s4">1.0</span>
+ <span class="s4">*/</span>
+<span class="s1">@Configuration</span>
+<span class="s2">public class </span><span class="s1">SwaggerConfig </span><span class="s3">{</span>
+
+    <span class="s1">@Bean</span>
+    <span class="s2">public </span><span class="s1">OpenAPI openAPI</span><span class="s3">() {</span>
+        <span class="s2">return new </span><span class="s1">OpenAPI</span><span class="s3">()</span>
+                <span class="s3">.</span><span class="s1">info</span><span class="s3">(</span><span class="s2">new </span><span class="s1">Info</span><span class="s3">()</span>
+                        <span class="s3">.</span><span class="s1">title</span><span class="s3">(</span><span class="s6">&quot;RCS Portal API&quot;</span><span class="s3">)</span>
+                        <span class="s3">.</span><span class="s1">description</span><span class="s3">(</span><span class="s6">&quot;RCS Portal API 문서&quot;</span><span class="s3">)</span>
+                        <span class="s3">.</span><span class="s1">version</span><span class="s3">(</span><span class="s6">&quot;1.0&quot;</span><span class="s3">));</span>
+    <span class="s3">}</span>
+<span class="s3">}</span></pre>
+</body>
+</html>

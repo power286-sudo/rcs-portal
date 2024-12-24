@@ -1,0 +1,45 @@
+<html>
+<head>
+<title>application.yml</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #bcbec4;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+application.yml</font>
+</center></td></tr></table>
+<pre><span class="s0">spring</span><span class="s1">:</span>
+  <span class="s0">application</span><span class="s1">:</span>
+    <span class="s0">name</span><span class="s1">: </span><span class="s3">message-service</span>
+  <span class="s0">datasource</span><span class="s1">:</span>
+    <span class="s0">url</span><span class="s1">: </span><span class="s3">${POSTGRES_URL}</span>
+    <span class="s0">username</span><span class="s1">: </span><span class="s3">${POSTGRES_USERNAME}</span>
+    <span class="s0">password</span><span class="s1">: </span><span class="s3">${POSTGRES_PASSWORD}</span>
+    <span class="s0">driver-class-name</span><span class="s1">: </span><span class="s3">org.postgresql.Driver</span>
+  <span class="s0">jpa</span><span class="s1">:</span>
+    <span class="s0">hibernate</span><span class="s1">:</span>
+      <span class="s0">ddl-auto</span><span class="s1">: </span><span class="s3">validate</span>
+    <span class="s0">properties</span><span class="s1">:</span>
+      <span class="s0">hibernate</span><span class="s1">:</span>
+        <span class="s0">format_sql</span><span class="s1">: </span><span class="s3">true</span>
+    <span class="s0">show-sql</span><span class="s1">: </span><span class="s3">true</span>
+
+<span class="s0">azure</span><span class="s1">:</span>
+  <span class="s0">eventhub</span><span class="s1">:</span>
+    <span class="s0">recipient-upload-hub</span><span class="s1">: </span><span class="s3">${AZURE_EVENTHUB_RECIPIENT_UPLOAD_HUB}</span>
+    <span class="s0">message-send-hub</span><span class="s1">: </span><span class="s3">${AZURE_EVENTHUB_MESSAGE_SEND_HUB}</span>
+
+<span class="s0">encryption</span><span class="s1">:</span>
+  <span class="s0">key</span><span class="s1">: </span><span class="s3">${ENCRYPTION_KEY}</span>
+
+<span class="s0">server</span><span class="s1">:</span>
+  <span class="s0">port</span><span class="s1">: </span><span class="s3">8082</span></pre>
+</body>
+</html>

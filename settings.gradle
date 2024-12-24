@@ -1,0 +1,9 @@
+rootProject.name = 'rcs-portal'
+
+include 'common'
+include 'auth-service'
+include 'message-service'
+include 'history-service'
+include 'common'
+include 'auth-service'
+

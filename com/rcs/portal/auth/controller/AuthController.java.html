@@ -1,0 +1,58 @@
+<html>
+<head>
+<title>AuthController.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #7a7e85;}
+.s1 { color: #bcbec4;}
+.s2 { color: #cf8e6d;}
+.s3 { color: #bcbec4;}
+.s4 { color: #5f826b; font-style: italic;}
+.s5 { color: #67a37c; font-style: italic;}
+.s6 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+AuthController.java</font>
+</center></td></tr></table>
+<pre><span class="s0">// /com/rcs/portal/auth/controller/AuthController.java</span>
+<span class="s2">package </span><span class="s1">com</span><span class="s3">.</span><span class="s1">rcs</span><span class="s3">.</span><span class="s1">portal</span><span class="s3">.</span><span class="s1">auth</span><span class="s3">.</span><span class="s1">controller</span><span class="s3">;</span>
+
+<span class="s2">import </span><span class="s1">com</span><span class="s3">.</span><span class="s1">rcs</span><span class="s3">.</span><span class="s1">portal</span><span class="s3">.</span><span class="s1">auth</span><span class="s3">.</span><span class="s1">dto</span><span class="s3">.</span><span class="s1">LoginRequest</span><span class="s3">;</span>
+<span class="s2">import </span><span class="s1">com</span><span class="s3">.</span><span class="s1">rcs</span><span class="s3">.</span><span class="s1">portal</span><span class="s3">.</span><span class="s1">auth</span><span class="s3">.</span><span class="s1">service</span><span class="s3">.</span><span class="s1">AuthService</span><span class="s3">;</span>
+<span class="s2">import </span><span class="s1">com</span><span class="s3">.</span><span class="s1">rcs</span><span class="s3">.</span><span class="s1">portal</span><span class="s3">.</span><span class="s1">common</span><span class="s3">.</span><span class="s1">dto</span><span class="s3">.</span><span class="s1">ApiResponse</span><span class="s3">;</span>
+<span class="s2">import </span><span class="s1">io</span><span class="s3">.</span><span class="s1">swagger</span><span class="s3">.</span><span class="s1">v3</span><span class="s3">.</span><span class="s1">oas</span><span class="s3">.</span><span class="s1">annotations</span><span class="s3">.</span><span class="s1">Operation</span><span class="s3">;</span>
+<span class="s2">import </span><span class="s1">io</span><span class="s3">.</span><span class="s1">swagger</span><span class="s3">.</span><span class="s1">v3</span><span class="s3">.</span><span class="s1">oas</span><span class="s3">.</span><span class="s1">annotations</span><span class="s3">.</span><span class="s1">tags</span><span class="s3">.</span><span class="s1">Tag</span><span class="s3">;</span>
+<span class="s2">import </span><span class="s1">lombok</span><span class="s3">.</span><span class="s1">RequiredArgsConstructor</span><span class="s3">;</span>
+<span class="s2">import </span><span class="s1">org</span><span class="s3">.</span><span class="s1">springframework</span><span class="s3">.</span><span class="s1">web</span><span class="s3">.</span><span class="s1">bind</span><span class="s3">.</span><span class="s1">annotation</span><span class="s3">.*;</span>
+
+<span class="s4">/**</span>
+ <span class="s4">* 인증 관련 API를 제공하는 컨트롤러입니다.</span>
+ <span class="s4">*</span>
+ <span class="s4">* </span><span class="s5">@author </span><span class="s4">RCS Portal Team</span>
+ <span class="s4">* </span><span class="s5">@version </span><span class="s4">1.0</span>
+ <span class="s4">*/</span>
+<span class="s1">@RestController</span>
+<span class="s1">@RequestMapping</span><span class="s3">(</span><span class="s6">&quot;/api/auth&quot;</span><span class="s3">)</span>
+<span class="s1">@RequiredArgsConstructor</span>
+<span class="s1">@Tag</span><span class="s3">(</span><span class="s1">name </span><span class="s3">= </span><span class="s6">&quot;인증 API&quot;</span><span class="s3">, </span><span class="s1">description </span><span class="s3">= </span><span class="s6">&quot;인증 관련 API&quot;</span><span class="s3">)</span>
+<span class="s2">public class </span><span class="s1">AuthController </span><span class="s3">{</span>
+    <span class="s2">private final </span><span class="s1">AuthService authService</span><span class="s3">;</span>
+
+    <span class="s1">@Operation</span><span class="s3">(</span><span class="s1">summary </span><span class="s3">= </span><span class="s6">&quot;로그인&quot;</span><span class="s3">, </span><span class="s1">description </span><span class="s3">= </span><span class="s6">&quot;사용자 로그인을 처리합니다&quot;</span><span class="s3">)</span>
+    <span class="s1">@PostMapping</span><span class="s3">(</span><span class="s6">&quot;/login&quot;</span><span class="s3">)</span>
+    <span class="s2">public </span><span class="s1">ApiResponse</span><span class="s3">&lt;?&gt; </span><span class="s1">login</span><span class="s3">(</span><span class="s1">@RequestBody LoginRequest request</span><span class="s3">) {</span>
+        <span class="s2">return </span><span class="s1">ApiResponse</span><span class="s3">.</span><span class="s1">success</span><span class="s3">(</span><span class="s1">authService</span><span class="s3">.</span><span class="s1">login</span><span class="s3">(</span><span class="s1">request</span><span class="s3">));</span>
+    <span class="s3">}</span>
+
+    <span class="s1">@Operation</span><span class="s3">(</span><span class="s1">summary </span><span class="s3">= </span><span class="s6">&quot;토큰 검증&quot;</span><span class="s3">, </span><span class="s1">description </span><span class="s3">= </span><span class="s6">&quot;JWT 토큰의 유효성을 검증합니다&quot;</span><span class="s3">)</span>
+    <span class="s1">@GetMapping</span><span class="s3">(</span><span class="s6">&quot;/verify&quot;</span><span class="s3">)</span>
+    <span class="s2">public </span><span class="s1">ApiResponse</span><span class="s3">&lt;?&gt; </span><span class="s1">verifyToken</span><span class="s3">(</span><span class="s1">@RequestHeader</span><span class="s3">(</span><span class="s6">&quot;Authorization&quot;</span><span class="s3">) </span><span class="s1">String token</span><span class="s3">) {</span>
+        <span class="s2">return </span><span class="s1">ApiResponse</span><span class="s3">.</span><span class="s1">success</span><span class="s3">(</span><span class="s1">authService</span><span class="s3">.</span><span class="s1">verifyToken</span><span class="s3">(</span><span class="s1">token</span><span class="s3">));</span>
+    <span class="s3">}</span>
+<span class="s3">}</span></pre>
+</body>
+</html>

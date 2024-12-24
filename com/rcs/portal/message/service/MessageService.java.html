@@ -1,0 +1,52 @@
+<html>
+<head>
+<title>MessageService.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #7a7e85;}
+.s1 { color: #bcbec4;}
+.s2 { color: #cf8e6d;}
+.s3 { color: #bcbec4;}
+.s4 { color: #5f826b; font-style: italic;}
+.s5 { color: #67a37c; font-style: italic;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+MessageService.java</font>
+</center></td></tr></table>
+<pre><span class="s0">// /com/rcs/portal/message/service/MessageService.java</span>
+<span class="s2">package </span><span class="s1">com</span><span class="s3">.</span><span class="s1">rcs</span><span class="s3">.</span><span class="s1">portal</span><span class="s3">.</span><span class="s1">message</span><span class="s3">.</span><span class="s1">service</span><span class="s3">;</span>
+
+<span class="s2">import </span><span class="s1">com</span><span class="s3">.</span><span class="s1">rcs</span><span class="s3">.</span><span class="s1">portal</span><span class="s3">.</span><span class="s1">message</span><span class="s3">.</span><span class="s1">dto</span><span class="s3">.</span><span class="s1">MessageSendRequest</span><span class="s3">;</span>
+<span class="s2">import </span><span class="s1">com</span><span class="s3">.</span><span class="s1">rcs</span><span class="s3">.</span><span class="s1">portal</span><span class="s3">.</span><span class="s1">message</span><span class="s3">.</span><span class="s1">dto</span><span class="s3">.</span><span class="s1">MessageSendResponse</span><span class="s3">;</span>
+<span class="s2">import </span><span class="s1">com</span><span class="s3">.</span><span class="s1">rcs</span><span class="s3">.</span><span class="s1">portal</span><span class="s3">.</span><span class="s1">message</span><span class="s3">.</span><span class="s1">dto</span><span class="s3">.</span><span class="s1">RecipientUploadResponse</span><span class="s3">;</span>
+<span class="s2">import </span><span class="s1">org</span><span class="s3">.</span><span class="s1">springframework</span><span class="s3">.</span><span class="s1">web</span><span class="s3">.</span><span class="s1">multipart</span><span class="s3">.</span><span class="s1">MultipartFile</span><span class="s3">;</span>
+
+<span class="s4">/**</span>
+ <span class="s4">* 메시지 발송 관련 비즈니스 로직을 처리하는 서비스 인터페이스입니다.</span>
+ <span class="s4">*</span>
+ <span class="s4">* </span><span class="s5">@author </span><span class="s4">RCS Portal Team</span>
+ <span class="s4">* </span><span class="s5">@version </span><span class="s4">1.0</span>
+ <span class="s4">*/</span>
+<span class="s2">public interface </span><span class="s1">MessageService </span><span class="s3">{</span>
+    <span class="s4">/**</span>
+     <span class="s4">* 수신자 정보 파일을 업로드하고 처리합니다.</span>
+     <span class="s4">*</span>
+     <span class="s4">* </span><span class="s5">@param </span><span class="s4">file 수신자 정보 파일</span>
+     <span class="s4">* </span><span class="s5">@return </span><span class="s4">업로드 결과</span>
+     <span class="s4">*/</span>
+    <span class="s1">RecipientUploadResponse uploadRecipients</span><span class="s3">(</span><span class="s1">MultipartFile file</span><span class="s3">);</span>
+
+    <span class="s4">/**</span>
+     <span class="s4">* 메시지를 발송합니다.</span>
+     <span class="s4">*</span>
+     <span class="s4">* </span><span class="s5">@param </span><span class="s4">request 메시지 발송 요청 정보</span>
+     <span class="s4">* </span><span class="s5">@return </span><span class="s4">발송 결과</span>
+     <span class="s4">*/</span>
+    <span class="s1">MessageSendResponse sendMessage</span><span class="s3">(</span><span class="s1">MessageSendRequest request</span><span class="s3">);</span>
+<span class="s3">}</span></pre>
+</body>
+</html>

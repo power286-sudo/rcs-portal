@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: message-service
+  datasource:
+    url: ${POSTGRES_URL}
+    username: ${POSTGRES_USERNAME}
+    password: ${POSTGRES_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: true
+
+azure:
+  eventhub:
+    recipient-upload-hub: ${AZURE_EVENTHUB_RECIPIENT_UPLOAD_HUB}
+    message-send-hub: ${AZURE_EVENTHUB_MESSAGE_SEND_HUB}
+
+encryption:
+  key: ${ENCRYPTION_KEY}
+
+server:
+  port: 8082

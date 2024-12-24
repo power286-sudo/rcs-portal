@@ -1,0 +1,6 @@
+dependencies {
+    implementation project(':common')
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+    implementation 'com.azure:azure-messaging-eventhubs:5.15.0'  // 5.20.1 -> 5.15.0으로 수정
+}

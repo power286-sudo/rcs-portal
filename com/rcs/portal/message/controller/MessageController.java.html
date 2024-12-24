@@ -1,0 +1,59 @@
+<html>
+<head>
+<title>MessageController.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #7a7e85;}
+.s1 { color: #bcbec4;}
+.s2 { color: #cf8e6d;}
+.s3 { color: #bcbec4;}
+.s4 { color: #5f826b; font-style: italic;}
+.s5 { color: #67a37c; font-style: italic;}
+.s6 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+MessageController.java</font>
+</center></td></tr></table>
+<pre><span class="s0">// /com/rcs/portal/message/controller/MessageController.java</span>
+<span class="s2">package </span><span class="s1">com</span><span class="s3">.</span><span class="s1">rcs</span><span class="s3">.</span><span class="s1">portal</span><span class="s3">.</span><span class="s1">message</span><span class="s3">.</span><span class="s1">controller</span><span class="s3">;</span>
+
+<span class="s2">import </span><span class="s1">com</span><span class="s3">.</span><span class="s1">rcs</span><span class="s3">.</span><span class="s1">portal</span><span class="s3">.</span><span class="s1">common</span><span class="s3">.</span><span class="s1">dto</span><span class="s3">.</span><span class="s1">ApiResponse</span><span class="s3">;</span>
+<span class="s2">import </span><span class="s1">com</span><span class="s3">.</span><span class="s1">rcs</span><span class="s3">.</span><span class="s1">portal</span><span class="s3">.</span><span class="s1">message</span><span class="s3">.</span><span class="s1">service</span><span class="s3">.</span><span class="s1">MessageService</span><span class="s3">;</span>
+<span class="s2">import </span><span class="s1">com</span><span class="s3">.</span><span class="s1">rcs</span><span class="s3">.</span><span class="s1">portal</span><span class="s3">.</span><span class="s1">message</span><span class="s3">.</span><span class="s1">dto</span><span class="s3">.</span><span class="s1">MessageSendRequest</span><span class="s3">;  </span><span class="s0">// 이 import 구문 추가</span>
+<span class="s2">import </span><span class="s1">io</span><span class="s3">.</span><span class="s1">swagger</span><span class="s3">.</span><span class="s1">v3</span><span class="s3">.</span><span class="s1">oas</span><span class="s3">.</span><span class="s1">annotations</span><span class="s3">.</span><span class="s1">Operation</span><span class="s3">;</span>
+<span class="s2">import </span><span class="s1">io</span><span class="s3">.</span><span class="s1">swagger</span><span class="s3">.</span><span class="s1">v3</span><span class="s3">.</span><span class="s1">oas</span><span class="s3">.</span><span class="s1">annotations</span><span class="s3">.</span><span class="s1">tags</span><span class="s3">.</span><span class="s1">Tag</span><span class="s3">;</span>
+<span class="s2">import </span><span class="s1">lombok</span><span class="s3">.</span><span class="s1">RequiredArgsConstructor</span><span class="s3">;</span>
+<span class="s2">import </span><span class="s1">org</span><span class="s3">.</span><span class="s1">springframework</span><span class="s3">.</span><span class="s1">web</span><span class="s3">.</span><span class="s1">bind</span><span class="s3">.</span><span class="s1">annotation</span><span class="s3">.*;</span>
+<span class="s2">import </span><span class="s1">org</span><span class="s3">.</span><span class="s1">springframework</span><span class="s3">.</span><span class="s1">web</span><span class="s3">.</span><span class="s1">multipart</span><span class="s3">.</span><span class="s1">MultipartFile</span><span class="s3">;</span>
+
+<span class="s4">/**</span>
+ <span class="s4">* 메시지 전송 관련 API를 제공하는 컨트롤러입니다.</span>
+ <span class="s4">*</span>
+ <span class="s4">* </span><span class="s5">@author </span><span class="s4">RCS Portal Team</span>
+ <span class="s4">* </span><span class="s5">@version </span><span class="s4">1.0</span>
+ <span class="s4">*/</span>
+<span class="s1">@RestController</span>
+<span class="s1">@RequestMapping</span><span class="s3">(</span><span class="s6">&quot;/api/messages&quot;</span><span class="s3">)</span>
+<span class="s1">@RequiredArgsConstructor</span>
+<span class="s1">@Tag</span><span class="s3">(</span><span class="s1">name </span><span class="s3">= </span><span class="s6">&quot;메시지 API&quot;</span><span class="s3">, </span><span class="s1">description </span><span class="s3">= </span><span class="s6">&quot;메시지 전송 관련 API&quot;</span><span class="s3">)</span>
+<span class="s2">public class </span><span class="s1">MessageController </span><span class="s3">{</span>
+    <span class="s2">private final </span><span class="s1">MessageService messageService</span><span class="s3">;</span>
+
+    <span class="s1">@Operation</span><span class="s3">(</span><span class="s1">summary </span><span class="s3">= </span><span class="s6">&quot;수신자 파일 업로드&quot;</span><span class="s3">, </span><span class="s1">description </span><span class="s3">= </span><span class="s6">&quot;수신자 정보 파일을 업로드합니다&quot;</span><span class="s3">)</span>
+    <span class="s1">@PostMapping</span><span class="s3">(</span><span class="s6">&quot;/recipients/upload&quot;</span><span class="s3">)</span>
+    <span class="s2">public </span><span class="s1">ApiResponse</span><span class="s3">&lt;?&gt; </span><span class="s1">uploadRecipients</span><span class="s3">(</span><span class="s1">@RequestParam</span><span class="s3">(</span><span class="s6">&quot;file&quot;</span><span class="s3">) </span><span class="s1">MultipartFile file</span><span class="s3">) {</span>
+        <span class="s2">return </span><span class="s1">ApiResponse</span><span class="s3">.</span><span class="s1">success</span><span class="s3">(</span><span class="s1">messageService</span><span class="s3">.</span><span class="s1">uploadRecipients</span><span class="s3">(</span><span class="s1">file</span><span class="s3">));</span>
+    <span class="s3">}</span>
+
+    <span class="s1">@Operation</span><span class="s3">(</span><span class="s1">summary </span><span class="s3">= </span><span class="s6">&quot;메시지 발송&quot;</span><span class="s3">, </span><span class="s1">description </span><span class="s3">= </span><span class="s6">&quot;메시지를 발송합니다&quot;</span><span class="s3">)</span>
+    <span class="s1">@PostMapping</span><span class="s3">(</span><span class="s6">&quot;/send&quot;</span><span class="s3">)</span>
+    <span class="s2">public </span><span class="s1">ApiResponse</span><span class="s3">&lt;?&gt; </span><span class="s1">sendMessage</span><span class="s3">(</span><span class="s1">@RequestBody MessageSendRequest request</span><span class="s3">) {</span>
+        <span class="s2">return </span><span class="s1">ApiResponse</span><span class="s3">.</span><span class="s1">success</span><span class="s3">(</span><span class="s1">messageService</span><span class="s3">.</span><span class="s1">sendMessage</span><span class="s3">(</span><span class="s1">request</span><span class="s3">));</span>
+    <span class="s3">}</span>
+<span class="s3">}</span></pre>
+</body>
+</html>
